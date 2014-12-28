@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Real Time Search Usign Ajax</title>
+	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+</head>
+<body>
+	<p><b>Escribe un Nombre Abajo:</b></p>
+
+	Nombre: <input type="text" onkeyup="mostrarSugerencia(this.value)">
+
+	<p>Sugerencias: <span id="txtSugerencias"></span></p>
+
+	<script>
+	// JAVASCRIPT
+
+		function mostrarSugerencia(nombre){
+
+	// JQuery
+
+			$.ajax({
+				url: 'servidor.php',
+				type: 'POST',				
+				data: {datos: nombre},
+			})
+
+			.done(function(respuesta) {
+				$('#txtSugerencias').text(respuesta);
+			});
+		}
+
+	</script>	
+</body>
+</html>
